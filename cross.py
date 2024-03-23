@@ -7,7 +7,7 @@ from appium.webdriver.common.appiumby import AppiumBy
 # from appium.webdriver.common.touch_action import TouchAction
 import time
 
-driver = webdriver.Remote(appium_server_url, options=AppiumOptions().desired_caps)
+driver = webdriver.Remote(appium_server_url, options= AppiumOptions().load_capabilities(desired_caps))
 
 # Locate phone number login button by ACCESSIBILITY_ID
 phone_number_login_button = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue with phone number")
