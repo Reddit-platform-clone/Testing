@@ -1,8 +1,10 @@
+import appium
 from appium import webdriver
 from locators import desired_caps, appium_server_url
 from typing import Any, Dict
 from appium.options.common import AppiumOptions
 from appium.webdriver.common.appiumby import AppiumBy
+# from appium.webdriver.common.touch_action import TouchAction
 import time
 
 driver = webdriver.Remote(appium_server_url, options=AppiumOptions().desired_caps)
@@ -24,3 +26,15 @@ time.sleep(30)
 
 skip_button = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Skip").click()
 time.sleep(30)
+
+# touch = TouchAction(driver)
+# touch.press(x=315, y=975).move_to(x=338,y=476).release().perform()
+# time.sleep(30)
+
+# for i in range(5):
+#      touch = TouchAction(driver)
+#      touch.press(x=315, y=975).move_to(x=338, y=476).release().perform()
+# time.sleep(30)
+
+interests = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Music").click()
+time.sleep(10)
