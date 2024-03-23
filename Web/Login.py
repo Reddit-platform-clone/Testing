@@ -41,6 +41,7 @@ def ValidLogin():
     # Get the text of the success message
     # success_msg = success_msg_element.text
     # print("Success message:", success_msg)
+    sleep(10)
     driver.close()
 
 def WrongUsername():
