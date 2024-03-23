@@ -1,27 +1,26 @@
-import time
 from appium import webdriver
+from locators import desired_caps, appium_server_url
 from typing import Any, Dict
 from appium.options.common import AppiumOptions
 from appium.webdriver.common.appiumby import AppiumBy
+import time
 
-cap: Dict[str, Any] = {
-    "platformName": "Android",
-    "appium:platformVersion": "12",
-    "appium:automationName": "UIAutomator2",
-    "uiautomator2ServerInstallTimeout": 100000,
-    "appium:deviceName": "adb-RF8M307ZBGE-nsY6kF._adb-tls-connect._tcp"
-}
+driver = webdriver.Remote(appium_server_url, options=AppiumOptions().desired_caps)
 
-url = "http://localhost:4723"
-time.sleep(30)
-driver = webdriver.Remote(url, options=AppiumOptions().load_capabilities(cap))
-driver.implicitly_wait(30)
-
-######################################### write something in search bar in chrome ###############################
-opening = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Reddit")
-opening.click()
+# Locate phone number login button by ACCESSIBILITY_ID
+phone_number_login_button = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue with phone number")
+phone_number_login_button.click()
 time.sleep(30)
 
-continueWithPhone = driver.find_element(by=AppiumBy.XPATH, value="//*[@text='Continue with phone number']")
-continueWithPhone.click()
+phone_number_field = driver.find_element(by=AppiumBy.XPATH, value="//*[text='Enter phone number']").send_keys("01100000008")
+time.sleep(30)
+
+continue_button = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="continue_button_id").click()
+time.sleep(30)
+
+verification_code_field = driver.find_element(by=AppiumBy.XPATH, value="//*[text='Enter verification code']").send_keys("658383")
+continue_button = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="continue_button_id").click()
+time.sleep(30)
+
+skip_button = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Skip").click()
 time.sleep(30)
