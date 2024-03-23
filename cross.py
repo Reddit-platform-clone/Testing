@@ -1,7 +1,5 @@
-import appium
 from appium import webdriver
 from locators import desired_caps, appium_server_url
-from typing import Any, Dict
 from appium.options.common import AppiumOptions
 from appium.webdriver.common.appiumby import AppiumBy
 # from appium.webdriver.common.touch_action import TouchAction
@@ -17,11 +15,11 @@ time.sleep(30)
 phone_number_field = driver.find_element(by=AppiumBy.XPATH, value="//*[text='Enter phone number']").send_keys("01100000008")
 time.sleep(30)
 
-continue_button = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="continue_button_id").click()
+continue_button = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue").click()
 time.sleep(30)
 
 verification_code_field = driver.find_element(by=AppiumBy.XPATH, value="//*[text='Enter verification code']").send_keys("658383")
-continue_button = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="continue_button_id").click()
+continue_button = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue").click()
 time.sleep(30)
 
 skip_button = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Skip").click()
@@ -37,4 +35,5 @@ time.sleep(30)
 # time.sleep(30)
 
 interests = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Music").click()
+continue_button = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue").click()
 time.sleep(10)
