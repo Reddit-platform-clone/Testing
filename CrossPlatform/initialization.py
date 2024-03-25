@@ -1,6 +1,8 @@
 from appium import webdriver
 from typing import Any, Dict
 
+# Appium driver initialization 
+
 desired_caps: Dict[str, Any] = {
     "platformName": "Android",
     "appium:platformVersion": "13",
@@ -10,4 +12,3 @@ desired_caps: Dict[str, Any] = {
 }
 
 url = 'http://localhost:4723'
-  
