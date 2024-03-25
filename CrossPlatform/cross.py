@@ -13,6 +13,7 @@ value_Xpath_signup = "//android.widget.FrameLayout[@resource-id='android:id/cont
 pass_Xpath_signup = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[2]"
 pass_Xpath_login = "//android.widget.ScrollView/android.widget.EditText[2]"
 username_Xpath_signup = "//android.widget.EditText"
+fp_Xpath = "//android.widget.EditText"
 
 
 # VALID SIGN UP WITH EMAIL
@@ -25,6 +26,7 @@ def signup_email():
     sleep(1)
     email_field.send_keys('youssefemad@hotmail.com')
     sleep(3)
+
     pass_field = driver.find_element(by=AppiumBy.XPATH, value=pass_Xpath_signup)
     pass_field.click()
     sleep(1)
@@ -126,7 +128,7 @@ def login_fp():
     forgot_pass.click()
     sleep(3)
 
-    email_or_user_field = driver.find_element(by=AppiumBy.XPATH, value='//android.widget.EditText')
+    email_or_user_field = driver.find_element(by=AppiumBy.XPATH, value=fp_Xpath)
     email_or_user_field.click()
     sleep(1)
     email_or_user_field.send_keys('youssefemad@hotmail.com')
