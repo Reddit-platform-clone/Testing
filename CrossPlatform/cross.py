@@ -26,7 +26,6 @@ def signup_email():
     sleep(1)
     email_field.send_keys('youssefemad@hotmail.com')
     sleep(3)
-
     pass_field = driver.find_element(by=AppiumBy.XPATH, value=pass_Xpath_signup)
     pass_field.click()
     sleep(1)
@@ -40,11 +39,25 @@ def signup_email():
     username = driver.find_element(by=AppiumBy.XPATH, value=username_Xpath_signup)
     username.click()
     sleep(1)
-    username.send_keys("ValidSignUp")
+    username.send_keys("asas")
     sleep(3)
 
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue").click()
+    sleep(2)
+    email_field = driver.find_element(by=AppiumBy.XPATH, value=value_Xpath_signup)
+    email_field.click()
+    sleep(1)
+    email_field.send_keys('youssefemad@hotmail.com')
+    sleep(3)
+    pass_field = driver.find_element(by=AppiumBy.XPATH, value=pass_Xpath_login)
+    pass_field.click()
+    sleep(1)
+    pass_field.send_keys("eMAD1234")
+    sleep(1)
 
+    driver.hide_keyboard()
+    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue").click()
+    sleep(10)
     driver.quit()
 
 
