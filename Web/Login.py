@@ -1,123 +1,83 @@
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
-
 from selenium.webdriver.common.keys import Keys
 from time import sleep
+import NamesRef
 
-#Data to test with it
-the_email = "TestingTeam@yopmail.com"
-the_password = "Testing@2025"
-the_username = "TestingTeam2025"
 
-# Initialize Chrome WebDriver
-driver = webdriver.Chrome()
 
-# Open the URL
-driver.get("https://www.reddit.com/")
+# Function to handle login
+def login(username, password):
+    # Initialize Chrome WebDriver
+    driver = webdriver.Chrome()
 
-# Get and print the title
-title = driver.title
-print("Website Title:", title)
-print(driver.current_url)
+    # Open the URL
+    driver.get("https://www.reddit.com/")
+    sleep(5)
 
-def ValidLogin():
-    login = driver.find_element(By.ID, "login-button")
-    login.click()
-
+    #get login button the click on it
+    login_button = driver.find_element(By.ID, NamesRef.loginButton)
+    login_button.click()
     sleep(2)
-    login_Username = driver.find_element(By.ID, "login-username")
-    login_Username.send_keys(the_username)
 
-    login_password = driver.find_element(By.ID, "login-password")
-    login_password.send_keys(the_password)
-    sleep(2)
-    login_password.send_keys(Keys.RETURN)
+    #wait until fields appear
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "login-username")))
 
-    # Locate the element containing the success message
+    #get username and password fields
+    username_field = driver.find_element(By.ID, "login-username")
+    password_field = driver.find_element(By.ID, "login-password")
 
-    #under construction#####################
-    #success_msg_element = WebDriverWait(driver,20).until(lambda x: x.find_element(By.CLASS_NAME, "alert-success"))
+    #make sure fields are clear
+    username_field.clear()
+    password_field.clear()
 
-    # Get the text of the success message
-    # success_msg = success_msg_element.text
-    # print("Success message:", success_msg)
-    sleep(10)
-    driver.close()
+    #filling fields with data
+    username_field.send_keys(username)
+    password_field.send_keys(password)
 
-def WrongUsername():
-    login = driver.find_element(By.ID, "login-button")
-    login.click()
+    #submitting the form
+    password_field.send_keys(Keys.RETURN)
 
-    sleep(5)
-    login_Username = driver.find_element(By.ID, "login-username")
-    login_Username.send_keys("WrongOne")
+    #detecting if the login successfull or not
+    try:
+        success_message = WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, "//faceplate-toast[@type='success']")))
+        print("Success message found.")
+    except TimeoutException:
+        print("Success message not found within timeout.")
 
-    login_password = driver.find_element(By.ID, "login-password")
-    login_password.send_keys(the_password)
-    sleep(5)
-    login_password.send_keys(Keys.RETURN)
-    sleep(10)
-    driver.close()
+    driver.quit()
 
-def WrongPass():
-    login = driver.find_element(By.ID, "login-button")
-    login.click()
+# Testing different cases
+def test_login():
+    # Valid login
+    print("Testing valid login...")
+    login(NamesRef.login_username, NamesRef.login_password)
 
-    sleep(5)
-    login_Username = driver.find_element(By.ID, "login-username")
-    login_Username.send_keys(the_username)
+    # Invalid username
+    print("Testing invalid username...")
+    login("InvalidUsername", NamesRef.login_password)
 
-    login_password = driver.find_element(By.ID, "login-password")
-    login_password.send_keys("WrongPassword")
-    sleep(5)
-    login_password.send_keys(Keys.RETURN)
-    sleep(10)
-    driver.close()
+    # Invalid password
+    print("Testing invalid password...")
+    login(NamesRef.login_username, "InvalidPassword")
 
-def BlanckUsername():
-    login = driver.find_element(By.ID, "login-button")
-    login.click()
+    # Blank username
+    print("Testing blank username...")
+    login("", NamesRef.login_password)
 
-    sleep(5)
-    login_Username = driver.find_element(By.ID, "login-username")
-    login_Username.send_keys("")
+    # Blank password
+    print("Testing blank password...")
+    login(NamesRef.login_username, "")
 
-    login_password = driver.find_element(By.ID, "login-password")
-    login_password.send_keys(the_password)
-    sleep(5)
-    login_password.send_keys(Keys.RETURN)
-    sleep(10)
-    driver.close()
+    # Blank username and password
+    print("Testing blank username and password...")
+    login("", "")
 
-def BlanckPassword():
-    login = driver.find_element(By.ID, "login-button")
-    login.click()
+    # Password with leading/trailing spaces
+    print("Testing password with leading/trailing spaces...")
+    login(NamesRef.login_username, "  " + NamesRef.login_password + "  ")
 
-    sleep(5)
-    login_Username = driver.find_element(By.ID, "login-username")
-    login_Username.send_keys(the_username)
-
-    login_password = driver.find_element(By.ID, "login-password")
-    login_password.send_keys("")
-    sleep(5)
-    login_password.send_keys(Keys.RETURN)
-    sleep(10)
-    driver.close()
-
-def BlanckBoth():
-    login = driver.find_element(By.ID, "login-button")
-    login.click()
-
-    sleep(5)
-    login_Username = driver.find_element(By.ID, "login-username")
-    login_Username.send_keys("")
-
-    login_password = driver.find_element(By.ID, "login-password")
-    login_password.send_keys("")
-    sleep(5)
-    login_password.send_keys(Keys.RETURN)
-    sleep(10)
-    driver.close()
-
-#Testing The Valid Case
-ValidLogin()
