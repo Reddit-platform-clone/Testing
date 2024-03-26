@@ -4,7 +4,6 @@ from initialization import url, desired_caps
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.common import AppiumOptions
 from time import sleep
-from typing import Any, Dict
 
 driver = webdriver.Remote(url, options=AppiumOptions().load_capabilities(desired_caps))
 driver.implicitly_wait(10)
