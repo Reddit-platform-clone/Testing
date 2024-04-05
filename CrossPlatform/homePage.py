@@ -28,13 +28,18 @@ def upvote():
     sleep(3)
 
 def comment():
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.upvote_comment_Xpath).click()
+    sleep(2)
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.downvote_comment_Xpath).click()
+    sleep(5)
+
     driver.find_element(by=AppiumBy.XPATH, value=initialization.comment_Xpath).click()
     sleep(2)
 
     comments = driver.find_element(by=AppiumBy.XPATH, value=initialization.add_comment_Xpath)
     comments.click()
     sleep(1)
-    comments.send_keys("Yarab nekhlas mn gam3a")
+    comments.send_keys("I think so")
     sleep(1)
 
     driver.find_element(by=AppiumBy.XPATH, value=initialization.post_comment_Xpath).click()
@@ -49,9 +54,20 @@ def reply():
     sleep(2)
     replies.send_keys("You are right")
 
+def share():
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.share_Xpath).click()
+    sleep(2)
+
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.share_profile_Xpath).click()
+    sleep(3)
+
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.share_post_Xpath).click()
+    sleep(2)    
+
 # Uncomment the function you want
 # change_posts()
 # join_community()
 # upvote()
 # comment()
 # reply()
+# share()
