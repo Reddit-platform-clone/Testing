@@ -113,7 +113,9 @@ def login():
     sleep(1)
     pass_field.send_keys("eMAD1234")
     sleep(3)
-
+    
+    driver.hide_keyboard()
+    sleep(1)
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue").click()
     sleep(3)
 
