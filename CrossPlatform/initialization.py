@@ -12,6 +12,9 @@ desired_caps: Dict[str, Any] = {
 
 url = 'http://localhost:4723'
 
+# Locators:
+
+# 1- Sarakel locators:
 value_Xpath_signup = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[1]"
 pass_Xpath_signup = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[2]"
 createC_Xpath = "//android.widget.EditText"
@@ -20,6 +23,8 @@ post_Xpath_body = "//android.widget.FrameLayout[@resource-id='android:id/content
 menu_Xpath_home = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[1]"
 pass_Xpath_login = "//android.widget.ScrollView/android.widget.EditText[2]"
 username_Xpath_signup = "//android.widget.EditText"
+
+# 2- Reddit locators:
 home_Xpath = "//android.widget.TextView[@content-desc='Home feed' and @resource-id='toolbar_feed_type_label']"
 pop_Xpath = "(//android.view.View[@resource-id='toolbar_feed_type_item'])[2]"
 watch_Xpath = "(//android.view.View[@resource-id='toolbar_feed_type_item'])[3]"
