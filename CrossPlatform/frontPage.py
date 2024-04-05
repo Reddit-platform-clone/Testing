@@ -1,12 +1,11 @@
 import pytest
 from appium import webdriver
-from initialization import url, desired_caps
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.common import AppiumOptions
 import initialization
 from time import sleep
 
-driver = webdriver.Remote(url, options=AppiumOptions().load_capabilities(desired_caps))
+driver = webdriver.Remote(initialization.url, options=AppiumOptions().load_capabilities(initialization.desired_caps))
 driver.implicitly_wait(10)
 
 
