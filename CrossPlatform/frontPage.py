@@ -1,22 +1,12 @@
 import pytest
 from appium import webdriver
-from initialization import url, desired_caps
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.common import AppiumOptions
+import initialization
 from time import sleep
 
-driver = webdriver.Remote(url, options=AppiumOptions().load_capabilities(desired_caps))
+driver = webdriver.Remote(initialization.url, options=AppiumOptions().load_capabilities(initialization.desired_caps))
 driver.implicitly_wait(10)
-
-# locators
-value_Xpath_signup = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[1]"
-pass_Xpath_signup = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[2]"
-createC_Xpath = "//android.widget.EditText"
-post_Xpath_title = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]"
-post_Xpath_body = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]"
-menu_Xpath_home = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[1]"
-pass_Xpath_login = "//android.widget.ScrollView/android.widget.EditText[2]"
-username_Xpath_signup = "//android.widget.EditText"
 
 
 # VALID SIGN UP WITH EMAIL
@@ -24,12 +14,12 @@ def signup_email():
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue with email").click()
     sleep(3)
 
-    email_field = driver.find_element(by=AppiumBy.XPATH, value=value_Xpath_signup)
+    email_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.value_Xpath_signup)
     email_field.click()
     sleep(1)
     email_field.send_keys('youssefemad@hotmail.com')
     sleep(3)
-    pass_field = driver.find_element(by=AppiumBy.XPATH, value=pass_Xpath_signup)
+    pass_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.pass_Xpath_signup)
     pass_field.click()
     sleep(1)
     pass_field.send_keys("eMAD1234")
@@ -39,7 +29,7 @@ def signup_email():
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue").click()
     sleep(3)
 
-    username = driver.find_element(by=AppiumBy.XPATH, value=username_Xpath_signup)
+    username = driver.find_element(by=AppiumBy.XPATH, value=initialization.username_Xpath_signup)
     username.click()
     sleep(1)
     username.send_keys("asas")
@@ -47,12 +37,12 @@ def signup_email():
 
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue").click()
     sleep(2)
-    email_field = driver.find_element(by=AppiumBy.XPATH, value=value_Xpath_signup)
+    email_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.value_Xpath_signup)
     email_field.click()
     sleep(1)
     email_field.send_keys('youssefemad@hotmail.com')
     sleep(3)
-    pass_field = driver.find_element(by=AppiumBy.XPATH, value=pass_Xpath_login)
+    pass_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.pass_Xpath_login)
     pass_field.click()
     sleep(1)
     pass_field.send_keys("eMAD1234")
@@ -68,13 +58,13 @@ def signup_wrongemail():
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue with email").click()
     sleep(3)
 
-    email_field = driver.find_element(by=AppiumBy.XPATH, value=value_Xpath_signup)
+    email_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.value_Xpath_signup)
     email_field.click()
     sleep(1)
     email_field.send_keys('youssefemadhotmail.com')
     sleep(3)
 
-    pass_field = driver.find_element(by=AppiumBy.XPATH, value=pass_Xpath_signup)
+    pass_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.pass_Xpath_signup)
     pass_field.click()
     pass_field.send_keys("eMAD1234")
     sleep(3)
@@ -90,13 +80,13 @@ def signup_invalidpass():
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue with email").click()
     sleep(3)
 
-    email_field = driver.find_element(by=AppiumBy.XPATH, value=value_Xpath_signup)
+    email_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.value_Xpath_signup)
     email_field.click()
     sleep(1)
     email_field.send_keys('youssefemad@hotmail.com')
     sleep(3)
 
-    pass_field = driver.find_element(by=AppiumBy.XPATH, value=pass_Xpath_signup)
+    pass_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.pass_Xpath_signup)
     pass_field.click()
     sleep(1)
     pass_field.send_keys("eMAD12")
@@ -113,17 +103,19 @@ def login():
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Login").click()
     sleep(3)
 
-    email_field = driver.find_element(by=AppiumBy.XPATH, value=value_Xpath_signup)
+    email_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.value_Xpath_signup)
     email_field.click()
     sleep(1)
     email_field.send_keys('youssefemad@hotmail.com')
     sleep(3)
-    pass_field = driver.find_element(by=AppiumBy.XPATH, value=pass_Xpath_login)
+    pass_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.pass_Xpath_login)
     pass_field.click()
     sleep(1)
     pass_field.send_keys("eMAD1234")
     sleep(3)
-
+    
+    driver.hide_keyboard()
+    sleep(1)
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue").click()
     sleep(3)
 
@@ -134,12 +126,12 @@ def complete_process():
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Login").click()
     sleep(3)
 
-    email_field = driver.find_element(by=AppiumBy.XPATH, value=value_Xpath_signup)
+    email_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.value_Xpath_signup)
     email_field.click()
     sleep(1)
     email_field.send_keys('youssefemad@hotmail.com')
     sleep(3)
-    pass_field = driver.find_element(by=AppiumBy.XPATH, value=pass_Xpath_login)
+    pass_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.pass_Xpath_login)
     pass_field.click()
     sleep(1)
     pass_field.send_keys("eMAD1234")
@@ -158,7 +150,7 @@ def login_fp():
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Login").click()
     sleep(3)
 
-    email_field = driver.find_element(by=AppiumBy.XPATH, value=value_Xpath_signup)
+    email_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.value_Xpath_signup)
     email_field.click()
     sleep(1)
     email_field.send_keys('youssefemad@hotmail.com')
@@ -182,12 +174,12 @@ def wrong_pass():
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Login").click()
     sleep(3)
 
-    email_field = driver.find_element(by=AppiumBy.XPATH, value=value_Xpath_signup)
+    email_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.value_Xpath_signup)
     email_field.click()
     sleep(1)
     email_field.send_keys('youssefemadhotmail.com')
     sleep(3)
-    pass_field = driver.find_element(by=AppiumBy.XPATH, value=pass_Xpath_login)
+    pass_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.pass_Xpath_login)
     pass_field.click()
     sleep(1)
     pass_field.send_keys("eMAD1234")
@@ -198,14 +190,14 @@ def wrong_pass():
 
 
 def create_public_circle():
-    circled = driver.find_element(by=AppiumBy.XPATH, value=menu_Xpath_home)
+    circled = driver.find_element(by=AppiumBy.XPATH, value=initialization.menu_Xpath_home)
     circled.click()
     sleep(2)
 
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Create a circle").click()
     sleep(1)
 
-    creating = driver.find_element(by=AppiumBy.XPATH, value=createC_Xpath)
+    creating = driver.find_element(by=AppiumBy.XPATH, value=initialization.createC_Xpath)
     creating.click()
     sleep(1)
     creating.send_keys("Software Testing")
@@ -216,14 +208,14 @@ def create_public_circle():
 
 
 def create_private_circle():
-    circled = driver.find_element(by=AppiumBy.XPATH, value=menu_Xpath_home)
+    circled = driver.find_element(by=AppiumBy.XPATH, value=initialization.menu_Xpath_home)
     circled.click()
     sleep(2)
 
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Create a circle").click()
     sleep(1)
 
-    creating = driver.find_element(by=AppiumBy.XPATH, value=createC_Xpath)
+    creating = driver.find_element(by=AppiumBy.XPATH, value=initialization.createC_Xpath)
     creating.click()
     sleep(1)
     creating.send_keys("Software Testing")
@@ -242,13 +234,13 @@ def create_post():
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Create Tab 3 of 5").click()
     sleep(1)
 
-    title = driver.find_element(by=AppiumBy.XPATH, value=post_Xpath_title)
+    title = driver.find_element(by=AppiumBy.XPATH, value=initialization.post_Xpath_title)
     title.click()
     sleep(1)
     title.send_keys("WHY?")
     sleep(2)
 
-    body = driver.find_element(by=AppiumBy.XPATH, value=post_Xpath_body)
+    body = driver.find_element(by=AppiumBy.XPATH, value=initialization.post_Xpath_body)
     body.click()
     sleep(1)
     body.send_keys("I AM FINISHED")
