@@ -64,6 +64,16 @@ def share():
     driver.find_element(by=AppiumBy.XPATH, value=initialization.share_post_Xpath).click()
     sleep(2)    
 
+def open_profile():
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.profile_Xpath).click()
+    sleep(2)
+
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.my_profile_Xpath).click()
+    sleep(2)
+
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.edit_profile_Xpath).click()
+    sleep(2)
+
 # Uncomment the function you want
 # change_posts()
 # join_community()
@@ -71,3 +81,4 @@ def share():
 # comment()
 # reply()
 # share()
+# open_profile()

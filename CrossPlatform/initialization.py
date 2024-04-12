@@ -40,3 +40,6 @@ downvote_comment_Xpath = "(//android.widget.ImageView[@content-desc='Downvote'])
 share_Xpath = "(//android.view.View[@resource-id='post_share_button'])[1]"
 share_profile_Xpath = "(//android.view.View[@resource-id='share_action_button'])[3]"
 share_post_Xpath = "//android.widget.ImageView[@resource-id='com.reddit.frontpage:id/inner_peeking_snoovatar']"
+profile_Xpath = "//android.widget.ImageView[@resource-id='com.reddit.frontpage:id/inner_peeking_snoovatar']"
+my_profile_Xpath = "//android.widget.TextView[@resource-id='com.reddit.frontpage:id/drawer_nav_item_title' and @text='My profile']"
+edit_profile_Xpath = "//android.view.ViewGroup[@resource-id='com.reddit.frontpage:id/profile_pager_header']/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.Button"
