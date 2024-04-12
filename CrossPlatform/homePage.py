@@ -78,7 +78,7 @@ def edit_profile():
     open_profile()
     sleep(1)
 
-    Dname = driver.find_element(by=AppiumBy.XPATH, value=name_Xpath)
+    Dname = driver.find_element(by=AppiumBy.XPATH, value=initialization.name_Xpath)
     Dname.click()
     sleep(1)
     Dname.send_keys("Youssef Emad")
