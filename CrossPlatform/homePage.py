@@ -74,6 +74,42 @@ def open_profile():
     driver.find_element(by=AppiumBy.XPATH, value=initialization.edit_profile_Xpath).click()
     sleep(2)
 
+def edit_profile():
+    open_profile()
+    sleep(1)
+
+    Dname = driver.find_element(by=AppiumBy.XPATH, value=name_Xpath)
+    Dname.click()
+    sleep(1)
+    Dname.send_keys("Youssef Emad")
+    sleep(1)
+
+    about = driver.find_element(by=AppiumBy.XPATH, value=initialization.about_Xpath)
+    about.click()
+    sleep(1)
+    about.send_keys("I am an undergraduate biomedical engineer")
+    sleep(1)
+
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.visibility_Xpath).click()
+    sleep(1)
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.visibility_Xpath).click()
+    sleep(1)
+
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.active_comm_Xpath).click()
+    sleep(1)
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.active_comm_Xpath).click()
+    sleep(1)
+
+    links = driver.find_element(by=AppiumBy.XPATH, value=initialization.social_link_Xpath)
+    links.click()
+    sleep(1)
+    which = driver.find_element(by=AppiumBy.XPATH, value=initialization.choose_link_Xpath)
+    which.click()
+    sleep(1)
+    which.send_keys("any community")
+    
+    driver.quit()    
+
 # Uncomment the function you want
 # change_posts()
 # join_community()
@@ -82,3 +118,4 @@ def open_profile():
 # reply()
 # share()
 # open_profile()
+# edit_profile()

@@ -43,3 +43,10 @@ share_post_Xpath = "//android.widget.ImageView[@resource-id='com.reddit.frontpag
 profile_Xpath = "//android.widget.ImageView[@resource-id='com.reddit.frontpage:id/inner_peeking_snoovatar']"
 my_profile_Xpath = "//android.widget.TextView[@resource-id='com.reddit.frontpage:id/drawer_nav_item_title' and @text='My profile']"
 edit_profile_Xpath = "//android.view.ViewGroup[@resource-id='com.reddit.frontpage:id/profile_pager_header']/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.Button"
+name_Xpath = "//android.widget.TextView[@text='Display name – optional']"
+about_Xpath = "//android.widget.EditText[@resource-id='about_field']"
+social_link_Xpath = "//android.widget.Button[@content-desc='Add social link']"
+choose_link_Xpath = "//android.widget.TextView[@text='Reddit']"  # choose which name you want to add the link for
+com_or_usnm_Xpath = "//android.widget.FrameLayout[@resource-id='com.reddit.frontpage:id/screen_modal_container']/android.view.ViewGroup/android.view.View/android.widget.EditText/android.view.View"
+visibility_Xpath = "//android.view.View[@resource-id='content_visibility']/android.view.View"
+active_comm_Xpath = "//android.view.View[@resource-id='show_active_communities']/android.view.View"
