@@ -26,3 +26,4 @@ Post_Submit_Button = "//*[@id='submit-post-button']"
 Home_button = "//*[@id='reddit-logo']"
 OpenChat = "//*[@id='header-action-item-chat-button']"
 OpenInbox = "//*[@id='mini-inbox-tooltip']/span/faceplate-tracker/faceplate-tooltip/button"
+
