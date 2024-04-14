@@ -32,11 +32,28 @@ edit_profile_Xpath = "//android.widget.Button[@content-desc='Edit']"
 chat_Xpath = "//android.view.View[@content-desc='habiba']"
 message_Xpath = "//android.widget.EditText"
 send_Xpath = "//android.widget.EditText/android.widget.Button"
+join_post_Xpath = "(//android.widget.Button[@content-desc='Join'])[1]"
+upvote_post_Xpath = """"//android.widget.ImageView[@content-desc="2 
+1890
+1
+56
+56"]/android.widget.Button[3]"""
+join_post_Xpath = "(//android.widget.Button[@content-desc='Join'])[1]"
+dwonvote_post_Xpath = """//android.widget.ImageView[@content-desc="2 
+1890
+1
+56
+56"]/android.widget.Button[4]"""
+compose_mess_Xpath = "//android.widget.Button[@content-desc='Compose Message']"
+send_to_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]"
+title_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]"
+body_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]"
+sendmess_Xpath = "//android.widget.Button[@content-desc='Send']"
+
 
 # 2- Reddit locators:
 watch_Xpath = "(//android.view.View[@resource-id='toolbar_feed_type_item'])[3]"
 latest_Xpath = "(//android.view.View[@resource-id='toolbar_feed_type_item'])[4]"
-upvote_Xpath = "(//android.view.View[@resource-id='post_footer'])[2]/android.view.View[1]"
 comment_Xpath = "(//android.view.View[@resource-id='post_comment_button'])[2]"
 add_comment_Xpath = "//android.widget.Button[@resource-id='com.reddit.frontpage:id/reply_text_view']"
 post_comment_Xpath = "//android.widget.Button[@resource-id='com.reddit.frontpage:id/menu_item_text']"

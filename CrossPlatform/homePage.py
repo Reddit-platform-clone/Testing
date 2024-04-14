@@ -15,6 +15,8 @@ Tab 2 of 5""").click()
     driver.find_element(by=AppiumBy.XPATH, value=initialization.join_Xpath).click()
     driver.quit()
 
+def join_community_via_post():
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.join_post_Xpath).click()
 
 def change_posts():
     driver.find_element(by=AppiumBy.XPATH, value=initialization.home_Xpath).click()
@@ -26,8 +28,11 @@ def change_posts():
 
 
 def upvote():
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.upvote_Xpath).click()
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.upvote_post_Xpath).click()
     sleep(3)
+
+def downvote():
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.downvote_comment_Xpath).click()    
 
 def comment():
     driver.find_element(by=AppiumBy.XPATH, value=initialization.upvote_comment_Xpath).click()
@@ -129,6 +134,33 @@ Tab 4 of 5""").click()
     sleep(2)
     driver.quit()
 
+def inbox():
+    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="""Inbox
+Tab 5 of 5""").click()
+    sleep(3)
+
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.compose_mess_Xpath).click()
+    sleep(2)
+
+    sendmessage = driver.find_element(by=AppiumBy.XPATH, value=initialization.send_to_Xpath)
+    sendmessage.click()
+    sleep(1)
+    sendmessage.send_keys("bahey")
+
+    titlemessage = driver.find_element(by=AppiumBy.XPATH, value=initialization.title_Xpath)
+    titlemessage.click()
+    sleep(1)
+    titlemessage.send_keys("Yala discord")
+    sleep(1)
+
+    bodymessage = driver.find_element(by=AppiumBy.XPATH, value=initialization.body_Xpath)
+    bodymessage.click()
+    sleep(1)
+    bodymessage.send_keys("2oly ghayarto eh")
+    sleep(1)
+
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.sendmess_Xpath).click()
+
 # Uncomment the function you want
 # change_posts()
 # join_community()
@@ -139,3 +171,5 @@ Tab 4 of 5""").click()
 # open_profile()
 # edit_profile()
 # chat()
+# join_community_via_post()
+# inbox()
