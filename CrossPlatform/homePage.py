@@ -9,16 +9,18 @@ driver = webdriver.Remote(initialization.url, options=AppiumOptions().load_capab
 driver.implicitly_wait(10)
 
 def join_community():
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.join_Xpath).click()
+    driver.find_element(by=AppiumBy.XPATH, value="""Circles
+Tab 2 of 5""").click()
     sleep(3)
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.join_Xpath).click()
     driver.quit()
 
 
 def change_posts():
-    driver.find_element(by=AppiumBy.XPATH, value="//android.widget.Spinner").click()
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.home_Xpath).click()
     sleep(5)
 
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.latest_Xpath).click()
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.pop_Xpath).click()
     sleep(5)
     driver.quit()
 
@@ -110,6 +112,23 @@ def edit_profile():
     
     driver.quit()    
 
+def chat():
+    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="""Chat
+Tab 4 of 5""").click()
+    sleep(3)
+
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.chat_Xpath).click()
+    sleep(1)
+
+    message = driver.find_element(by=AppiumBy.XPATH, value=initialization.message_Xpath)
+    message.click()
+    sleep(1)
+    message.send_keys("We are ready")
+    sleep(2)
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.send_Xpath).click()
+    sleep(2)
+    driver.quit()
+
 # Uncomment the function you want
 # change_posts()
 # join_community()
@@ -119,3 +138,4 @@ def edit_profile():
 # share()
 # open_profile()
 # edit_profile()
+# chat()
