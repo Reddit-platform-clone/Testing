@@ -26,6 +26,11 @@ def change_posts():
     sleep(5)
     driver.quit()
 
+def post_settings():
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.set_post).click()
+    sleep(3)
+
+    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Save").click() # Hide - Block Account - Report
 
 def upvote():
     driver.find_element(by=AppiumBy.XPATH, value=initialization.upvote_post_Xpath).click()
@@ -173,3 +178,4 @@ Tab 5 of 5""").click()
 # chat()
 # join_community_via_post()
 # inbox()
+# post_settings()

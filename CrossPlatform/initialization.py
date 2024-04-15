@@ -49,6 +49,11 @@ send_to_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']
 title_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]"
 body_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]"
 sendmess_Xpath = "//android.widget.Button[@content-desc='Send']"
+set_post = """//android.widget.ImageView[@content-desc="2 
+1890
+1
+56
+56"]/android.widget.Button[2]"""
 
 
 # 2- Reddit locators:
