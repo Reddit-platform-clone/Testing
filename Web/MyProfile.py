@@ -1,89 +1,75 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 import NamesRef
-
-# Initialize Chrome WebDriver
-driver = webdriver.Chrome()
-# Open the URL
-driver.get("https://www.reddit.com/")
-sleep(5)
+import NormalLogin
 
 
 def MyProfile():
-    login(NamesRef.login_username, NamesRef.login_password)
+    """
+    Function to navigate to the user's profile page and interact with various profile options.
 
+    This function logs in using predefined credentials, navigates to the user's profile, and tests various profile options.
 
-    # wait until profile icon appear then press on it to show the settings
-    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, NamesRef.Profile_Icon)))
-    profile_icon = driver.find_element(By.XPATH, NamesRef.Profile_Icon)
+    Args:
+        None
+
+    Returns:
+        None
+    """
+
+    # Login using predefined credentials
+    driver = NormalLogin.login(NamesRef.login_username, NamesRef.login_password)
+
+    # wait until profile icon appears, then click on it to show the settings
+    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, NamesRef.profile_icon)))
+    profile_icon = driver.find_element(By.XPATH, NamesRef.profile_icon)
     profile_icon.click()
     sleep(2)
 
-    view_profile = driver.find_element(By.XPATH, NamesRef.View_Profile)
+    # Tests view profile
+    view_profile = driver.find_element(By.XPATH, NamesRef.view_profile)
     view_profile.click()
     sleep(3)
 
-    Overview_button = driver.find_element(By.XPATH, NamesRef.Profile_Overview_button)
+    # Tests Overview Section
+    Overview_button = driver.find_element(By.XPATH, NamesRef.profile_overview_button)
     Overview_button.click()
-    sleep(5)
+    sleep(3)
 
-    Posts_button = driver.find_element(By.XPATH, NamesRef.Profile_Posts_button)
+    # Tests Posts Section
+    Posts_button = driver.find_element(By.XPATH, NamesRef.profile_posts_button)
     Posts_button.click()
-    sleep(5)
+    sleep(3)
 
-    Comments_button = driver.find_element(By.XPATH, NamesRef.Profile_Comments_button)
+    # Tests Comments Section
+    Comments_button = driver.find_element(By.XPATH, NamesRef.profile_comments_button)
     Comments_button.click()
-    sleep(5)
+    sleep(3)
 
-    Saved_button = driver.find_element(By.XPATH, NamesRef.Profile_Saved_button)
+    # Tests Saved Section
+    Saved_button = driver.find_element(By.XPATH, NamesRef.profile_saved_button)
     Saved_button.click()
-    sleep(5)
+    sleep(3)
 
-    Hidden_button = driver.find_element(By.XPATH, NamesRef.Profile_Hidden_button)
+    # Tests Hidden Section
+    Hidden_button = driver.find_element(By.XPATH, NamesRef.profile_hidden_button)
     Hidden_button.click()
-    sleep(5)
+    sleep(3)
 
-    Upvoted_button = driver.find_element(By.XPATH, NamesRef.Profile_Upvoted_button)
+    # Tests Upvoted Section
+    Upvoted_button = driver.find_element(By.XPATH, NamesRef.profile_upvoted_button)
     Upvoted_button.click()
-    sleep(5)
+    sleep(3)
 
-    Downvoted_button = driver.find_element(By.XPATH, NamesRef.Profile_Downvoted_button)
+    # Tests Downvoted Section
+    Downvoted_button = driver.find_element(By.XPATH, NamesRef.profile_downvoted_button)
     Downvoted_button.click()
-    sleep(5)
+    sleep(3)
 
-
+    # Close the browser window
     driver.close()
 
-
-
-def login(username, password):
-
-   #get login button then press on it
-   login_button = driver.find_element(By.ID, NamesRef.loginButton)
-   login_button.click()
-
-   #wait untill fields to appear
-   WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "login-username")))
-
-   #get the fields for username & password
-   username_field = driver.find_element(By.ID, "login-username")
-   password_field = driver.find_element(By.ID, "login-password")
-
-   #make sure fields are clear
-   username_field.clear()
-   password_field.clear()
-
-   #filling the fields with data
-   username_field.send_keys(username)
-   password_field.send_keys(password)
-
-   #submitting the form
-   password_field.send_keys(Keys.RETURN)
 
 MyProfile()
