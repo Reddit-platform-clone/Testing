@@ -1,12 +1,6 @@
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.action_chains import ActionChains
 from time import sleep
 from faker import Faker
 import random
@@ -15,6 +9,12 @@ import NamesRef
 
 
 def createEmail():
+    """
+    Function to generate a random email address.
+
+    Returns:
+        str: Randomly generated email address.
+    """
     # Generate a random string of letters and digits for the username
     username = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
 
@@ -22,31 +22,53 @@ def createEmail():
     email = username + '@yopmail.com'
     return email
 
+
 def ceatePasword():
+    """
+    Function to generate a random strong password.
+
+    Returns:
+        str: Randomly generated strong password.
+    """
     char_set = string.ascii_letters + string.digits + string.punctuation
     # Generate a random password of the specified length
     password = ''.join(random.choice(char_set) for i in range(12))
     return password
 
+
 def createWeakPassword():
+    """
+    Function to generate a weak password (for testing purposes).
+
+    Returns:
+        str: Weak password.
+    """
     char_set = string.digits
-    # Generate a random password of the specified length
+    # Generate a weak password (all digits)
     password = ''.join('a'*8)
     return password
 
-mainURL="https://www.reddit.com/"
 
 def NormalSignUp():
+    """
+    Function to perform a normal sign-up process on Reddit.
+
+    This function initializes the Chrome WebDriver, creates a random email and password, navigates to the sign-up
+    page, fills in the email and password fields, solves the reCAPTCHA (manually), and submits the sign-up form.
+
+    Returns:
+        None
+    """
     # Initialize the web driver
     driver = webdriver.Chrome()
 
     # Create an email and username
-    email= createEmail()
+    email = createEmail()
 
     # Create a password
     password = ceatePasword()
 
-    # Navigate to the sign up page
+    # Navigate to the sign-up page
     driver.get("https://www.reddit.com/register/")
     sleep(5)
 
@@ -60,10 +82,10 @@ def NormalSignUp():
     pass_field = driver.find_element(By.ID, NamesRef.signupPasswordSpace)
     pass_field.send_keys(password)
 
-    #waiting time till I solve the reCAPTCHA
+    # Waiting time till the reCAPTCHA is solved
     sleep(15)
 
-    #press enter to proceed to next part
+    # Press enter to proceed to the next part
     pass_field.send_keys(Keys.RETURN)
 
     sleep(15)
@@ -71,6 +93,15 @@ def NormalSignUp():
 
 
 def WeakPassSignUp():
+    """
+    Function to perform a sign-up process on Reddit with a weak password (for testing purposes).
+
+    This function initializes the Chrome WebDriver, creates a random email and weak password, navigates to the sign-up
+    page, fills in the email and password fields, solves the reCAPTCHA (manually), and submits the sign-up form.
+
+    Returns:
+        None
+    """
     # Initialize the web driver
     driver = webdriver.Chrome()
 
@@ -80,7 +111,7 @@ def WeakPassSignUp():
     # Create a weak password
     password = createWeakPassword()
 
-    # Navigate to the sign up page
+    # Navigate to the sign-up page
     driver.get("https://www.reddit.com/register/")
     sleep(5)
 
@@ -94,13 +125,13 @@ def WeakPassSignUp():
     pass_field = driver.find_element(By.ID, NamesRef.signupPasswordSpace)
     pass_field.send_keys(password)
 
-    # waiting time till I solve the reCAPTCHA
+    # Waiting time till the reCAPTCHA is solved
     sleep(15)
 
-    # press enter to proceed to next part
+    # Press enter to proceed to the next part
     pass_field.send_keys(Keys.RETURN)
 
     sleep(15)
     driver.close()
 
-    
+WeakPassSignUp()
