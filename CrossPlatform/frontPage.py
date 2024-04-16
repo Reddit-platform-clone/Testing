@@ -8,9 +8,15 @@ from time import sleep
 driver = webdriver.Remote(initialization.url, options=AppiumOptions().load_capabilities(initialization.desired_caps))
 driver.implicitly_wait(10)
 
-
-# VALID SIGN UP WITH EMAIL
 def signup_email():
+    """
+  Signs up for an account using a valid email and password.
+  Clicks on the "Continue with email" button and enters a valid email address in the email field.
+  Enters a valid password in the password field and clicks on "Continue".
+  Fills in the username field and clicks on "Continue" again.
+  Re-enters the email address and a valid password, then clicks on "Continue" to complete signup.
+  Finally, hides the keyboard and closes the driver.
+  """
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue with email").click()
     sleep(3)
 
@@ -55,6 +61,13 @@ def signup_email():
 
 
 def signup_wrongemail():
+    """
+  Attempts to sign up with an invalid email format.
+  Clicks on the "Continue with email" button and enters an email address in a wrong format in the email field.
+  Enters a valid password in the password field and clicks on "Continue".
+  (The signup process likely fails due to the invalid email format.)
+  Finally, closes the driver.
+  """
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue with email").click()
     sleep(3)
 
@@ -77,6 +90,13 @@ def signup_wrongemail():
 
 
 def signup_invalidpass():
+    """
+  Attempts to sign up with an invalid password (too short).
+  Clicks on the "Continue with email" button and enters a valid email address in the email field.
+  Enters an invalid password (shorter than allowed) in the password field and clicks on "Continue".
+  (The signup process likely fails due to the invalid password.)
+  Finally, closes the driver.
+  """
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue with email").click()
     sleep(3)
 
@@ -100,6 +120,12 @@ def signup_invalidpass():
 
 
 def login():
+    """
+  Logs in to an existing account with valid credentials.
+  Clicks on the "Login" button and enters a valid email address in the email field.
+  Enters the corresponding password in the password field and clicks on "Continue".
+  Hides the keyboard and closes the driver.
+  """
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Login").click()
     sleep(3)
 
@@ -123,6 +149,13 @@ def login():
 
 
 def complete_process():
+    """
+  Logs in to an existing account, creates a public circle, and closes the driver.
+  Calls the 'login' function to log in with a valid account.
+  Clicks on the menu element and then on "Create a circle" to initiate circle creation.
+  Enters a circle name in the creation field and clicks on "Create circle" to complete creation.
+  Finally, closes the driver.
+  """
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Login").click()
     sleep(3)
 
@@ -147,6 +180,13 @@ def complete_process():
 
 
 def login_fp():
+    """
+  Initiates the forgot password process for an account.
+  Clicks on the "Login" button and enters a valid email address in the email field.
+  Clicks on the "Forgot password?" element.
+  Enters the email address in the email/username field and clicks on "Reset Password".
+  Finally, closes the driver.
+  """
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Login").click()
     sleep(3)
 
@@ -171,6 +211,13 @@ def login_fp():
 
 
 def wrong_pass():
+    """
+  Attempts to login with an invalid password.
+  Clicks on the "Login" button and enters a valid email address in the email field.
+  Enters an incorrect password in the password field and clicks on "Continue".
+  (The login process likely fails due to the invalid password.)
+  Finally, closes the driver.
+  """
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Login").click()
     sleep(3)
 
@@ -190,6 +237,11 @@ def wrong_pass():
 
 
 def create_public_circle():
+    """
+  Creates a public circle.
+  Clicks on the menu element and then on "Create a circle" to initiate circle creation.
+  Enters a circle name in the creation field and clicks on "Create circle" to complete creation as a public circle.
+  """
     circled = driver.find_element(by=AppiumBy.XPATH, value=initialization.menu_Xpath_home)
     circled.click()
     sleep(2)
@@ -208,6 +260,13 @@ def create_public_circle():
 
 
 def create_private_circle():
+    """
+  Creates a private circle.
+  Clicks on the menu element and then on "Create a circle" to initiate circle creation.
+  Enters a circle name in the creation field.
+  Clicks on "Public" to open the selection, then clicks on "Private" to set the circle as private.
+  Clicks on "Create circle" to complete creation.
+  """
     circled = driver.find_element(by=AppiumBy.XPATH, value=initialization.menu_Xpath_home)
     circled.click()
     sleep(2)
@@ -231,6 +290,11 @@ def create_private_circle():
 
 
 def create_post():
+    """
+  Creates a post.
+  Clicks on the "Create" tab and enters a title and body for the post.
+  Clicks on "Next" to proceed to the next step of post creation.
+  """
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Create Tab 3 of 5").click()
     sleep(1)
 
