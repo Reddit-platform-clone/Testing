@@ -25,26 +25,21 @@ pass_Xpath_login = "//android.widget.ScrollView/android.widget.EditText[2]"
 username_Xpath_signup = "//android.widget.EditText"
 home_Xpath = "//android.widget.Button[@content-desc='Home']"
 pop_Xpath = "//android.view.View[@content-desc='Popular']"
-join_Xpath = "//android.widget.Button[@content-desc='Join']"
-profile_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[4]"
-my_profile_Xpath = "//android.view.View[@content-desc='My Profile']"
-edit_profile_Xpath = "//android.widget.Button[@content-desc='Edit']"
 chat_Xpath = "//android.view.View[@content-desc='habiba']"
 message_Xpath = "//android.widget.EditText"
+join_Xpath = "//android.widget.Button[@content-desc='Join']"
+profile_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[4]"
+my_profile_Xpath = "//android.view.View[@content-desc='Profile']"
+edit_profile_Xpath = "//android.widget.Button[@content-desc='Edit']"
 send_Xpath = "//android.widget.EditText/android.widget.Button"
 join_post_Xpath = "(//android.widget.Button[@content-desc='Join'])[1]"
-upvote_post_Xpath = """"//android.widget.ImageView[@content-desc="2 
-1890
-1
+downvote_post_Xpath = """//android.view.View[@content-desc=" c/2
+6h
+New Singing
+1892
 56
 56"]/android.widget.Button[3]"""
-join_post_Xpath = "(//android.widget.Button[@content-desc='Join'])[1]"
-dwonvote_post_Xpath = """//android.widget.ImageView[@content-desc="2 
-1890
-1
-56
-56"]/android.widget.Button[4]"""
-compose_mess_Xpath = "//android.widget.Button[@content-desc='Compose Message']"
+compose_mess_Xpath = "//android.widget.Button[@content-desc='New Message']"
 send_to_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]"
 title_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]"
 body_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[3]"

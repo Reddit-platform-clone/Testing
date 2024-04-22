@@ -14,18 +14,11 @@ def join_community():
   Clicks on the Circles tab and then clicks on the join button existed in the list of circles.
   Finally, closes the driver.
     """
-    driver.find_element(by=AppiumBy.XPATH, value="""Circles
-Tab 2 of 5""").click()
+    driver.find_element(by=AppiumBy.XPATH, value="""//android.view.View[@content-desc="Communities
+Tab 2 of 5"]""").click()
     sleep(3)
     driver.find_element(by=AppiumBy.XPATH, value=initialization.join_Xpath).click()
     driver.quit()
-
-def join_community_via_post():
-    """
-  Joins a community through a specific post if he liked the community that made the post
-  Clicks on the join button.
-  """
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.join_post_Xpath).click()
 
 def change_posts():
     """
@@ -57,7 +50,12 @@ def upvote():
   Upvotes a post.
   Clicks on the element identified by 'upvote_post_Xpath' to upvote the post.
   """
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.upvote_post_Xpath).click()
+    driver.find_element(by=AppiumBy.XPATH, value="""//android.view.View[@content-desc=" c/2
+6h
+New Singing
+1892
+56
+56"]/android.widget.Button[2]""").click()
     sleep(3)
 
 def downvote():
@@ -65,7 +63,7 @@ def downvote():
   Downvote a post.
   Clicks on the element identified by 'downvote_post_Xpath' to downvote the post.
   """
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.downvote_comment_Xpath).click()    
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.downvote_post_Xpath).click()    
 
 def comment():
     """
@@ -246,12 +244,12 @@ Tab 5 of 5""").click()
 # change_posts()
 # join_community()
 # upvote()
+# downvote()
 # comment()
 # reply()
 # share()
 # open_profile()
 # edit_profile()
 # chat()
-# join_community_via_post()
 # inbox()
 # post_settings()
