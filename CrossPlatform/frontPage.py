@@ -147,38 +147,6 @@ def login():
 
     driver.quit()
 
-
-def complete_process():
-    """
-  Logs in to an existing account, creates a public circle, and closes the driver.
-  Calls the 'login' function to log in with a valid account.
-  Clicks on the menu element and then on "Create a circle" to initiate circle creation.
-  Enters a circle name in the creation field and clicks on "Create circle" to complete creation.
-  Finally, closes the driver.
-  """
-    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Login").click()
-    sleep(3)
-
-    email_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.value_Xpath_signup)
-    email_field.click()
-    sleep(1)
-    email_field.send_keys('youssefemad@hotmail.com')
-    sleep(3)
-    pass_field = driver.find_element(by=AppiumBy.XPATH, value=initialization.pass_Xpath_login)
-    pass_field.click()
-    sleep(1)
-    pass_field.send_keys("eMAD1234")
-    sleep(3)
-
-    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Continue").click()
-    sleep(3)
-
-    create_public_circle()
-    sleep(10)
-
-    driver.quit()
-
-
 def login_fp():
     """
   Initiates the forgot password process for an account.
@@ -244,18 +212,17 @@ def create_public_circle():
   """
     circled = driver.find_element(by=AppiumBy.XPATH, value=initialization.menu_Xpath_home)
     circled.click()
-    sleep(2)
 
-    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Create a circle").click()
+    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Create community").click()
     sleep(1)
 
     creating = driver.find_element(by=AppiumBy.XPATH, value=initialization.createC_Xpath)
     creating.click()
     sleep(1)
-    creating.send_keys("Software Testing")
+    creating.send_keys("SoftwareTesting")
     sleep(2)
 
-    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Create circle").click()
+    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Create community").click()
     sleep(1)
 
 
@@ -269,23 +236,22 @@ def create_private_circle():
   """
     circled = driver.find_element(by=AppiumBy.XPATH, value=initialization.menu_Xpath_home)
     circled.click()
-    sleep(2)
 
-    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Create a circle").click()
+    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Create community").click()
     sleep(1)
 
     creating = driver.find_element(by=AppiumBy.XPATH, value=initialization.createC_Xpath)
     creating.click()
     sleep(1)
-    creating.send_keys("Software Testing")
+    creating.send_keys("SoftwareTesting")
     sleep(2)
 
-    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Public").click()
+    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="public").click()
     sleep(1)
-    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Private").click()
+    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="private").click()
     sleep(1)
 
-    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Create circle").click()
+    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Create community").click()
     sleep(1)
 
 
@@ -318,6 +284,6 @@ def create_post():
 # signup_invalidpass()
 # login()
 # login_fp()
-# complete_process()
 # create_private_circle()
 # create_public_circle()
+# create_post()
