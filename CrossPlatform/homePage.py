@@ -26,10 +26,10 @@ def change_posts():
   Clicks on the "home" element identified by 'home_Xpath', waits 5 seconds.
   Then clicks on the "popular" element identified by 'pop_Xpath', waits 5 seconds, and closes the driver.
   """
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.home_Xpath).click()
+    driver.find_element(by=AppiumBy.XPATH, value="//android.view.View[@content-desc='sarakel']").click()
     sleep(5)
 
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.pop_Xpath).click()
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.home_Xpath).click()
     sleep(5)
     driver.quit()
 
@@ -50,12 +50,7 @@ def upvote():
   Upvotes a post.
   Clicks on the element identified by 'upvote_post_Xpath' to upvote the post.
   """
-    driver.find_element(by=AppiumBy.XPATH, value="""//android.view.View[@content-desc=" c/2
-6h
-New Singing
-1892
-56
-56"]/android.widget.Button[2]""").click()
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.upvote_post_Xpath).click()
     sleep(3)
 
 def downvote():
@@ -63,7 +58,8 @@ def downvote():
   Downvote a post.
   Clicks on the element identified by 'downvote_post_Xpath' to downvote the post.
   """
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.downvote_post_Xpath).click()    
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.downvote_post_Xpath).click() 
+    sleep(2)   
 
 def comment():
     """
@@ -73,53 +69,27 @@ def comment():
   Clicks on the comment field identified by 'comment_Xpath', waits 2 seconds, and enters the text "I think so". Waits 1 second.
   Finally, clicks on the element identified by 'post_comment_Xpath' to send the comment.
   """
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.upvote_comment_Xpath).click()
-    sleep(2)
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.downvote_comment_Xpath).click()
-    sleep(5)
-
     driver.find_element(by=AppiumBy.XPATH, value=initialization.comment_Xpath).click()
     sleep(2)
 
     comments = driver.find_element(by=AppiumBy.XPATH, value=initialization.add_comment_Xpath)
     comments.click()
     sleep(1)
-    comments.send_keys("I think so")
+    comments.send_keys("ALAHLY top")
+    sleep(1)
+
+    driver.hide_keyboard()
     sleep(1)
 
     driver.find_element(by=AppiumBy.XPATH, value=initialization.post_comment_Xpath).click()
-
-
-def reply():
-    """
-  Replies to a comment.
-  Clicks on the element identified by 'reply_Xpath', waits 1 second.
-  Clicks on the reply field identified by 'reply_Xpath' again, waits 2 seconds, and enters the text "You are right" then sends it.
-  Finally, closes the driver.
-  """
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.reply_Xpath).click()
-    sleep(1)
-
-    replies = driver.find_element(by=AppiumBy.XPATH, value=initialization.reply_Xpath)
-    replies.click()
-    sleep(2)
-    replies.send_keys("You are right")
 
 def share():
     """
   Shares a post to profile.
   Clicks on the element identified by 'share_Xpath' to open the share menu. Waits 2 seconds.
-  Clicks on the element identified by 'share_profile_Xpath' to share the post to a profile. Waits 3 seconds.
-  Finally, clicks on the element identified by 'share_post_Xpath' to confirm sharing. Waits 2 seconds, and closes the driver.
   """
     driver.find_element(by=AppiumBy.XPATH, value=initialization.share_Xpath).click()
-    sleep(2)
-
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.share_profile_Xpath).click()
-    sleep(3)
-
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.share_post_Xpath).click()
-    sleep(2)    
+    sleep(2)   
 
 def open_profile():
     """
@@ -135,53 +105,6 @@ def open_profile():
 
     driver.find_element(by=AppiumBy.XPATH, value=initialization.edit_profile_Xpath).click()
     sleep(2)
-
-def edit_profile():
-    """
-  Edits the user profile information.
-  Calls the 'open_profile' function first to navigate to the edit profile section. Waits 1 second.
-  Clicks on the name field identified by 'name_Xpath', waits 1 second, and enters the new name "Youssef Emad". Waits 1 second.
-  Clicks on the about field identified by 'about_Xpath', waits 1 second, and enters the new bio "I am an undergraduate biomedical engineer". Waits 1 second.
-  Clicks on the visibility toggle element identified by 'visibility_Xpath' twice to change visibility settings. Waits 1 second each time.
-  Clicks on the active communities toggle element identified by 'active_comm_Xpath' twice to change settings. Waits 1 second each time.
-  Clicks on the social links field identified by 'social_link_Xpath', waits 1 second.
-  Clicks on the specific link field identified by 'choose_link_Xpath', waits 1 second, and enters the text "any community".
-  Finally, closes the driver.
-  """
-    open_profile()
-    sleep(1)
-
-    Dname = driver.find_element(by=AppiumBy.XPATH, value=initialization.name_Xpath)
-    Dname.click()
-    sleep(1)
-    Dname.send_keys("Youssef Emad")
-    sleep(1)
-
-    about = driver.find_element(by=AppiumBy.XPATH, value=initialization.about_Xpath)
-    about.click()
-    sleep(1)
-    about.send_keys("I am an undergraduate biomedical engineer")
-    sleep(1)
-
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.visibility_Xpath).click()
-    sleep(1)
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.visibility_Xpath).click()
-    sleep(1)
-
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.active_comm_Xpath).click()
-    sleep(1)
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.active_comm_Xpath).click()
-    sleep(1)
-
-    links = driver.find_element(by=AppiumBy.XPATH, value=initialization.social_link_Xpath)
-    links.click()
-    sleep(1)
-    which = driver.find_element(by=AppiumBy.XPATH, value=initialization.choose_link_Xpath)
-    which.click()
-    sleep(1)
-    which.send_keys("any community")
-    
-    driver.quit()    
 
 def chat():
     """
@@ -224,7 +147,7 @@ Tab 5 of 5""").click()
     sendmessage = driver.find_element(by=AppiumBy.XPATH, value=initialization.send_to_Xpath)
     sendmessage.click()
     sleep(1)
-    sendmessage.send_keys("bahey")
+    sendmessage.send_keys("bahey1")
 
     titlemessage = driver.find_element(by=AppiumBy.XPATH, value=initialization.title_Xpath)
     titlemessage.click()
