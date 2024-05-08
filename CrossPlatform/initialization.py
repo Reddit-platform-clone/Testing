@@ -31,7 +31,7 @@ chat_Xpath = "//android.widget.ImageView[@content-desc='bahey']"
 message_Xpath = "//android.widget.EditText"
 send_Xpath = "//android.widget.EditText/android.widget.Button"
 join_Xpath = "//android.widget.Button[@content-desc='Join']"
-profile_Xpath = "//android.widget.ImageView"
+sideBar_Xpath = "//android.widget.ImageView"
 my_profile_Xpath = "//android.view.View[@content-desc='Profile']"
 edit_profile_Xpath = "//android.widget.Button[@content-desc='Edit']"
 join_post_Xpath = "(//android.widget.Button[@content-desc='Join'])[1]"
@@ -71,3 +71,8 @@ test flair
 0
 0
 0"]/android.widget.Button[6]"""
+sideBar_Xpath = "//android.widget.ImageView"
+savedComment_ID = """Comments
+Tab 2 of 2"""
+my_profile_Xpath = "//android.view.View[@content-desc='Profile']"
+social_Xpath = "//android.widget.Button[@content-desc='Add social link']"
