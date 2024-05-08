@@ -91,21 +91,6 @@ def share():
     driver.find_element(by=AppiumBy.XPATH, value=initialization.share_Xpath).click()
     sleep(2)   
 
-def open_profile():
-    """
-  Opens the user profile and goes to edit profile section.
-  Clicks on the element identified by 'profile_Xpath' to open the profile tab. Waits 2 seconds.
-  Clicks on the element identified by 'my_profile_Xpath' to access the user profile. Waits 2 seconds.
-  """
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.profile_Xpath).click()
-    sleep(2)
-
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.my_profile_Xpath).click()
-    sleep(2)
-
-    driver.find_element(by=AppiumBy.XPATH, value=initialization.edit_profile_Xpath).click()
-    sleep(2)
-
 def chat():
     """
   Sends a message in a chat conversation.
@@ -133,7 +118,7 @@ def inbox():
     """
   Composes and sends a message in the Inbox.
   Clicks on the Inbox tab and then clicks on compose a new message.
-  Clicks on the recipient field (send_to_Xpath), enters the recipient name "bahey", clicks on the title field, 
+  Clicks on the recipient field (send_to_Xpath), enters the recipient name "bahey1", clicks on the title field, 
   enters the title "Yala discord", and enters the message body "2oly ghayarto eh" in the message field.
   Finally, clicks on the send message element and closes the driver.
   """
