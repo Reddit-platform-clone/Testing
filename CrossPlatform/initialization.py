@@ -71,3 +71,8 @@ test flair
 0
 0
 0"]/android.widget.Button[6]"""
+sideBar_Xpath = "//android.widget.ImageView"
+savedComment_ID = """Comments
+Tab 2 of 2"""
+my_profile_Xpath = "//android.view.View[@content-desc='Profile']"
+social_Xpath = "//android.widget.Button[@content-desc='Add social link']"
