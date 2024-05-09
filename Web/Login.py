@@ -1,17 +1,17 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from time import sleep
 import NamesRef
 
+
 def login(username, password):
     """
-    Function to login to Reddit.
+    Function to login to Sarakel.
 
-    This function initializes the Chrome WebDriver, navigates to the Reddit login page, fills in the username and
+    This function initializes the Chrome WebDriver, navigates to the Sarakel login page, fills in the username and
     password fields, and submits the login form.
 
     Args:
@@ -24,49 +24,54 @@ def login(username, password):
     # Initialize Chrome WebDriver
     driver = webdriver.Chrome()
 
-    # Open the URL
-    driver.get("https://www.reddit.com/")
-    sleep(5)
+    # Navigate to Sarakel.
+    driver.get("http://www.sarakel.me/")
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, NamesRef.login_button)))
 
-    # Get the login button and click on it
-    login_button = driver.find_element(By.ID, NamesRef.login_button)
+    # Find and click on the login button
+    login_button = driver.find_element(By.XPATH, NamesRef.login_button)
     login_button.click()
-    sleep(2)
 
-    # Wait until the fields appear
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "login-username")))
+    # Wait until the login fields appear
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, NamesRef.login_field)))
 
-    # Get the username and password fields
-    username_field = driver.find_element(By.ID, "login-username")
-    password_field = driver.find_element(By.ID, "login-password")
+    # Find the username and password fields
+    username_field = driver.find_element(By.ID, NamesRef.login_field)
+    password_field = driver.find_element(By.ID, NamesRef.password_field)
 
-    # Make sure fields are clear
+    # Clear the fields
     username_field.clear()
     password_field.clear()
 
-    # Fill in the fields with data
+    # Fill in the fields with provided username and password
     username_field.send_keys(username)
     password_field.send_keys(password)
 
-    # Submit the form
-    password_field.send_keys(Keys.RETURN)
 
-    # Detect if the login is successful or not
+    # Submit the login form
+    submit_login_button = driver.find_element(By.XPATH, NamesRef.submit_login_button)
+    submit_login_button.click()
+    sleep(3)
+
+    # Check if login was successful
     try:
-        success_message = WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located((By.XPATH, "//faceplate-toast[@type='success']")))
-        print("Success message found.")
-    except TimeoutException:
-        print("Success message not found within timeout.")
+        # Look for the error message
+        error_message = driver.find_element(By.XPATH, "//div[contains(text(), 'Invalid username or password.')]")
+        print("Login failed:", error_message.text)
+        driver.quit()
+        return False
+    except NoSuchElementException:
+        # No error message found, login successful
+        print("Login successful!")
+        driver.quit()
+        return True
 
-    # Quit the browser
-    driver.quit()
 
 def test_login():
     """
     Function to test different login scenarios.
 
-    This function tests various scenarios for logging in to Reddit.
+    This function tests various scenarios for logging in to Sarakel.
 
     Args:
         None
