@@ -76,3 +76,6 @@ savedComment_ID = """Comments
 Tab 2 of 2"""
 my_profile_Xpath = "//android.view.View[@content-desc='Profile']"
 social_Xpath = "//android.widget.Button[@content-desc='Add social link']"
+upvote_comment_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[8]/android.view.View/android.view.View/android.widget.EditText/android.widget.Button[4]"
+downvote_comment_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[8]/android.view.View/android.view.View/android.widget.EditText/android.widget.Button[5]"
+settings_comment_Xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[8]/android.view.View/android.view.View/android.widget.EditText/android.widget.Button[2]"
