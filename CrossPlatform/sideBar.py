@@ -8,12 +8,14 @@ from time import sleep
 driver = webdriver.Remote(initialization.url, options=AppiumOptions().load_capabilities(initialization.desired_caps))
 driver.implicitly_wait(10)
 
+
 def open_profile():
     """
-  Opens the user profile and goes to edit profile section.
-  Clicks on the element identified by 'profile_Xpath' to open the profile tab. Waits 2 seconds.
-  Clicks on the element identified by 'my_profile_Xpath' to access the user profile. Waits 2 seconds.
-  """
+    Opens the user profile and goes to edit profile section.
+    Clicks on the element identified by 'profile_Xpath' to open the profile tab. Waits 2 seconds.
+    Clicks on the element identified by 'my_profile_Xpath' to access the user profile. Waits 2 seconds.
+    Clicks on the element identified by 'edit_profile_Xpath' to open the edit profile section. Waits 2 seconds.
+    """
     driver.find_element(by=AppiumBy.XPATH, value=initialization.sideBar_Xpath).click()
     sleep(2)
 
@@ -23,7 +25,14 @@ def open_profile():
     driver.find_element(by=AppiumBy.XPATH, value=initialization.edit_profile_Xpath).click()
     sleep(2)
 
+
 def saved():
+    """
+    Opens the 'Saved' section of the user profile.
+    Clicks on the element identified by 'Saved' accessibility ID. Waits 5 seconds.
+    Clicks on the element identified by 'savedComment_ID' accessibility ID. Waits 2 seconds.
+    Quits the driver.
+    """
     driver.find_element(by=AppiumBy.XPATH, value=initialization.sideBar_Xpath).click()
     sleep(2)
 
@@ -37,6 +46,11 @@ def saved():
 
 
 def history():
+    """
+    Opens the 'History' section of the user profile.
+    Clicks on the element identified by 'History' accessibility ID. Waits 5 seconds.
+    Quits the driver.
+    """
     driver.find_element(by=AppiumBy.XPATH, value=initialization.sideBar_Xpath).click()
     sleep(2)
 
@@ -46,6 +60,13 @@ def history():
 
 
 def social():
+    """
+    Adds the 'Social links' of the user profile.
+    Clicks on the add social link button to access the social section. Waits 2 seconds.
+    Clicks on the element identified by 'Facebook' accessibility ID or any other link. Waits 1 second.
+    Clicks on the element identified by 'Add' accessibility ID. Waits 2 seconds.
+    Quits the driver.
+    """
     driver.find_element(by=AppiumBy.XPATH, value=initialization.sideBar_Xpath).click()
     sleep(2)
 
@@ -62,7 +83,19 @@ def social():
     sleep(2)
     driver.quit()
 
+
 def settings():
+    """
+    Opens the 'Settings' section of the user profile.
+    Clicks on the element identified by 'Settings' accessibility ID. Waits 2 seconds.
+    Clicks on the element identified by 'Update email address' accessibility ID. Waits 1 second.
+    Enters the new email address and clicks 'Continue'. Waits 4 seconds.
+    Clicks on the element identified by 'Change password' accessibility ID. Waits 1 second.
+    Enters old and new passwords, then clicks 'Change Password'. Waits 4 seconds.
+    Clicks on the 'Gender' section and selects 'Male' or 'Female'. Waits 1 second.
+    Updates chat and messaging permissions. Waits 1 second.
+    Quits the driver.
+    """
     driver.find_element(by=AppiumBy.XPATH, value=initialization.sideBar_Xpath).click()
     sleep(2)
 
@@ -104,7 +137,7 @@ def settings():
     driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Male").click()
     sleep(1)
 
-    chat = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="""Chat and messaging permisions""")
+    chat = driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Chat and messaging permisions")
     chat.click()
     sleep(1)
     driver.find_element(by=AppiumBy.XPATH, value=initialization.anyy_Xpath).click()
@@ -120,6 +153,12 @@ def settings():
 
 
 def logout():
+    """
+    Logs out the user.
+    Clicks on the profile icoon to access the user profile. Waits 1 second.
+    Clicks on the logout button to log out the user. Waits 3 seconds.
+    Quits the driver.
+    """
     driver.find_element(by=AppiumBy.XPATH, value=initialization.profilee_Xpath).click()
     sleep(1)
     driver.find_element(by=AppiumBy.XPATH, value=initialization.logout_Xpath).click()
