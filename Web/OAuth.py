@@ -19,10 +19,10 @@ def googleOauth():
         None
     """
     try:
-        # Initialize the web driver
+        # Initialize the Chrome WebDriver
         driver = webdriver.Chrome()
 
-        # Open the website that requires OAuth authentication
+        # Open the Sarakel website
         driver.get("http://www.sarakel.me/")
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, NamesRef.login_button)))
 
@@ -63,10 +63,9 @@ def googleOauth():
         print("OAuth authentication successful.")
 
     except Exception as e:
-        # Print error message
+        # Print error message if authentication fails
         print("Error during OAuth authentication:", str(e))
 
     finally:
-        # Close the web driver
+        # Close the WebDriver
         driver.quit()
-

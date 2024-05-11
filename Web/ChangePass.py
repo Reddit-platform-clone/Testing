@@ -5,22 +5,17 @@ from time import sleep
 import NamesRef
 import NormalLogin
 
-#data to test with it
-email = "TestingTeam2@yopmail.com"
-old_password = "Testing@2026"
-new_password = "Testing@2027"
-
 def ChangePassword(the_email, old_password, new_password):
    """
-   Function to change the password of a Reddit account.
+   Function to change the password of a Sarakel account.
 
-   This function logs in using above credentials, navigates to the settings, accesses the change password section,
-   fills in the old and new password fields, and saves the changes.
+   This function logs in using the provided credentials, navigates to the settings,
+   accesses the change password section, fills in the old and new password fields, and saves the changes.
 
    Args:
-       the_email (str): The email of the Reddit account.
-       old_password (str): The old password of the Reddit account.
-       new_password (str): The new password to set for the Reddit account.
+       the_email (str): The email of the Sarakel account.
+       old_password (str): The old password of the Sarakel account.
+       new_password (str): The new password to set for the Sarakel account.
 
    Returns:
        None
@@ -34,38 +29,37 @@ def ChangePassword(the_email, old_password, new_password):
    profile_icon.click()
    sleep(2)
 
-   # Get the setting button then press on it
+   # Find and click on the settings button
    setting_button = driver.find_element(By.XPATH, NamesRef.setting_button)
    setting_button.click()
 
-   # Wait until the change password button appears, then press on it
+   # Wait until the change password button appears, then click on it
    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, NamesRef.change_pass_button)))
-   changepassbutton = driver.find_element(By.XPATH, NamesRef.change_pass_button)
-   changepassbutton.click()
+   change_pass_button = driver.find_element(By.XPATH, NamesRef.change_pass_button)
+   change_pass_button.click()
    sleep(10)
 
-   # Wait for the password fields to appear
-   # Then getting the fields for old, new, and confirm password
-   WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, NamesRef.old_password_field)))
-   old_password_field = driver.find_element(By.CSS_SELECTOR, NamesRef.old_password_field)
-   new_password_field = driver.find_element(By.CSS_SELECTOR, NamesRef.new_password_field)
-   confirm_newpassword_field = driver.find_element(By.CSS_SELECTOR, NamesRef.confirm_newpassword_field)
+   # Find the field for entering the new password
+   new_password_field = driver.find_element(By.XPATH, NamesRef.new_password_field)
 
-   # Checking the fields are clear
-   old_password_field.clear()
+   # Clear the new password field before entering the new password
    new_password_field.clear()
-   confirm_newpassword_field.clear()
 
-   # Filling the password fields with data
-   old_password_field.send_keys(old_password)
+   # Enter the new password in the field
    new_password_field.send_keys(new_password)
-   confirm_newpassword_field.send_keys(new_password)
 
-   # Get the save button then press on it
+   # Find and click on the save button
    save_button = driver.find_element(By.XPATH, NamesRef.save_password_button)
    save_button.click()
-   sleep(10)
+   sleep(3)
 
-   # Close the browser window
-   driver.close()
+   # Now test if the password change was successful
+   flag = NormalLogin.login(the_email, new_password)
 
+   if flag == False:
+      print("Change password failed. Password didn't change.")
+      driver.close()
+   else:
+      print("Change password success. Password has been changed.")
+      flag.close()
+      driver.close()

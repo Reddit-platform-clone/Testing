@@ -6,7 +6,7 @@ import NormalLogin
 
 def NavFeatures():
     """
-    Function to navigate through various features on Reddit after login.
+    Function to navigate through various features on Sarakel after login.
 
     This function logs in using predefined credentials and navigates to the home page, Test navigation bar,
     opens the chat, and opens the

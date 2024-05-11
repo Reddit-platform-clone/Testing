@@ -10,7 +10,7 @@ import NormalLogin
 
 def OtherProfile():
     """
-    Function to navigate to another user's profile on Reddit.
+    Function to navigate to another user's profile on Sarakel.
 
     This function logs in using predefined credentials, searches for another user's profile by username, and navigates
     to that profile page.
