@@ -83,6 +83,41 @@ def comment():
 
     driver.find_element(by=AppiumBy.XPATH, value=initialization.post_comment_Xpath).click()
 
+def reply():
+    """
+    Allows the user to reply to a comment after upvoting and downvoting it.
+    Clicks on the element identified by 'comment_Xpath' to access the comment section. Waits 2 seconds.
+    Clicks on the element identified by 'upvote_comment_Xpath' to upvote the comment. Waits 2 seconds.
+    Clicks on the element identified by 'downvote_comment_Xpath' to downvote the comment. Waits 2 seconds.
+    Clicks on the element identified by 'settings_comment_Xpath' to access comment settings. Waits 1 second.
+    Clicks on the 'Save Comment' accessibility ID to save the comment. Waits 2 seconds.
+    Clicks on the element identified by 'reply_Xpath' to reply to the comment. Waits 1 second.
+    Enters the reply text in the input field identified by 'reply_Xpath'.
+    """
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.comment_Xpath).click()
+    sleep(2)
+
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.upvote_comment_Xpath).click()
+    sleep(2)
+
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.downvote_comment_Xpath).click()
+    sleep(2)
+
+    settings = driver.find_element(by=AppiumBy.XPATH, value=initialization.settings_comment_Xpath)
+    settings.click()
+    sleep(1)
+    driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Save Comment").click()  # Block User or Report Comment
+    sleep(2)
+
+    driver.find_element(by=AppiumBy.XPATH, value=initialization.reply_Xpath).click()
+    sleep(1)
+
+    replies = driver.find_element(by=AppiumBy.XPATH, value=initialization.reply_Xpath)
+    replies.click()
+    sleep(2)
+    replies.send_keys("You are right")
+
+
 def share():
     """
   Shares a post to profile.
